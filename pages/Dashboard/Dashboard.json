@@ -1,0 +1,557 @@
+{
+  "unpublishedPage": {
+    "name": "Dashboard Principal",
+    "slug": "dashboard",
+    "icon": "home",
+    "description": "Visão geral de receitas e métricas principais",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1200,
+          "containerStyle": "none",
+          "snapRows": 125,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 79,
+          "minHeight": 1200,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0,
+          "children": [
+            {
+              "widgetName": "HeaderSection",
+              "displayName": "Container",
+              "widgetId": "header_container",
+              "type": "CONTAINER_WIDGET",
+              "leftColumn": 0,
+              "rightColumn": 64,
+              "topRow": 0,
+              "bottomRow": 10,
+              "parentRowSpace": 10,
+              "parentColumnSpace": 12,
+              "containerStyle": "card",
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+              "boxShadow": "{{appsmith.theme.boxShadow.base}}",
+              "children": [{
+                "canvas": [{
+                  "widgetName": "TitleText",
+                  "displayName": "Text",
+                  "widgetId": "title_text",
+                  "type": "TEXT_WIDGET",
+                  "text": "Dashboard de Receitas",
+                  "fontSize": "2.25rem",
+                  "fontWeight": "BOLD",
+                  "fontStyle": "BOLD",
+                  "textColor": "#111827",
+                  "leftColumn": 0,
+                  "rightColumn": 32,
+                  "topRow": 2,
+                  "bottomRow": 6
+                }, {
+                  "widgetName": "DateRangeFilter",
+                  "displayName": "Date Picker",
+                  "widgetId": "date_filter",
+                  "type": "DATE_PICKER_WIDGET2",
+                  "leftColumn": 48,
+                  "rightColumn": 64,
+                  "topRow": 2,
+                  "bottomRow": 6,
+                  "dateFormat": "DD/MM/YYYY",
+                  "defaultDate": "{{moment().toISOString()}}",
+                  "isRequired": false,
+                  "borderRadius": "{{appsmith.theme.borderRadius.md}}"
+                }]
+              }]
+            },
+            {
+              "widgetName": "KPISection",
+              "displayName": "Container",
+              "widgetId": "kpi_container",
+              "type": "CONTAINER_WIDGET",
+              "leftColumn": 0,
+              "rightColumn": 64,
+              "topRow": 12,
+              "bottomRow": 28,
+              "parentRowSpace": 10,
+              "parentColumnSpace": 12,
+              "backgroundColor": "transparent",
+              "children": [{
+                "canvas": [
+                  {
+                    "widgetName": "ReceitaTotalCard",
+                    "displayName": "Stats Box",
+                    "widgetId": "kpi_receita_total",
+                    "type": "STATBOX_WIDGET",
+                    "leftColumn": 0,
+                    "rightColumn": 16,
+                    "topRow": 0,
+                    "bottomRow": 16,
+                    "backgroundColor": "#EDE9FE",
+                    "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+                    "boxShadow": "{{appsmith.theme.boxShadow.md}}",
+                    "children": [{
+                      "canvas": [{
+                        "widgetName": "ReceitaTotalIcon",
+                        "type": "ICON_WIDGET",
+                        "iconName": "trending-up",
+                        "iconSize": 32,
+                        "color": "#7C3AED",
+                        "leftColumn": 2,
+                        "rightColumn": 6,
+                        "topRow": 2,
+                        "bottomRow": 6
+                      }, {
+                        "widgetName": "ReceitaTotalLabel",
+                        "type": "TEXT_WIDGET",
+                        "text": "Receita Total",
+                        "fontSize": "0.875rem",
+                        "fontWeight": "MEDIUM",
+                        "textColor": "#6B7280",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 7,
+                        "bottomRow": 9
+                      }, {
+                        "widgetName": "ReceitaTotalValue",
+                        "type": "TEXT_WIDGET",
+                        "text": "R$ {{(Table1.tableData.reduce((sum, row) => sum + (row.valor || 0), 0)).toLocaleString('pt-BR', {minimumFractionDigits: 2})}}",
+                        "fontSize": "1.875rem",
+                        "fontWeight": "BOLD",
+                        "textColor": "#111827",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 10,
+                        "bottomRow": 14
+                      }]
+                    }]
+                  },
+                  {
+                    "widgetName": "CrescimentoCard",
+                    "displayName": "Stats Box",
+                    "widgetId": "kpi_crescimento",
+                    "type": "STATBOX_WIDGET",
+                    "leftColumn": 16,
+                    "rightColumn": 32,
+                    "topRow": 0,
+                    "bottomRow": 16,
+                    "backgroundColor": "#DCFCE7",
+                    "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+                    "boxShadow": "{{appsmith.theme.boxShadow.md}}",
+                    "children": [{
+                      "canvas": [{
+                        "widgetName": "CrescimentoIcon",
+                        "type": "ICON_WIDGET",
+                        "iconName": "arrow-up",
+                        "iconSize": 32,
+                        "color": "#10B981",
+                        "leftColumn": 2,
+                        "rightColumn": 6,
+                        "topRow": 2,
+                        "bottomRow": 6
+                      }, {
+                        "widgetName": "CrescimentoLabel",
+                        "type": "TEXT_WIDGET",
+                        "text": "Crescimento Mensal",
+                        "fontSize": "0.875rem",
+                        "fontWeight": "MEDIUM",
+                        "textColor": "#6B7280",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 7,
+                        "bottomRow": 9
+                      }, {
+                        "widgetName": "CrescimentoValue",
+                        "type": "TEXT_WIDGET",
+                        "text": "+12.5%",
+                        "fontSize": "1.875rem",
+                        "fontWeight": "BOLD",
+                        "textColor": "#059669",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 10,
+                        "bottomRow": 14
+                      }]
+                    }]
+                  },
+                  {
+                    "widgetName": "TranscricoesCard",
+                    "displayName": "Stats Box",
+                    "widgetId": "kpi_transcricoes",
+                    "type": "STATBOX_WIDGET",
+                    "leftColumn": 32,
+                    "rightColumn": 48,
+                    "topRow": 0,
+                    "bottomRow": 16,
+                    "backgroundColor": "#DBEAFE",
+                    "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+                    "boxShadow": "{{appsmith.theme.boxShadow.md}}",
+                    "children": [{
+                      "canvas": [{
+                        "widgetName": "TranscricoesIcon",
+                        "type": "ICON_WIDGET",
+                        "iconName": "file-text",
+                        "iconSize": 32,
+                        "color": "#3B82F6",
+                        "leftColumn": 2,
+                        "rightColumn": 6,
+                        "topRow": 2,
+                        "bottomRow": 6
+                      }, {
+                        "widgetName": "TranscricoesLabel",
+                        "type": "TEXT_WIDGET",
+                        "text": "Transcrições",
+                        "fontSize": "0.875rem",
+                        "fontWeight": "MEDIUM",
+                        "textColor": "#6B7280",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 7,
+                        "bottomRow": 9
+                      }, {
+                        "widgetName": "TranscricoesValue",
+                        "type": "TEXT_WIDGET",
+                        "text": "{{TranscricoesAPI.data.length || 0}}",
+                        "fontSize": "1.875rem",
+                        "fontWeight": "BOLD",
+                        "textColor": "#111827",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 10,
+                        "bottomRow": 14
+                      }]
+                    }]
+                  },
+                  {
+                    "widgetName": "AlertasCard",
+                    "displayName": "Stats Box",
+                    "widgetId": "kpi_alertas",
+                    "type": "STATBOX_WIDGET",
+                    "leftColumn": 48,
+                    "rightColumn": 64,
+                    "topRow": 0,
+                    "bottomRow": 16,
+                    "backgroundColor": "#FEF3C7",
+                    "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+                    "boxShadow": "{{appsmith.theme.boxShadow.md}}",
+                    "children": [{
+                      "canvas": [{
+                        "widgetName": "AlertasIcon",
+                        "type": "ICON_WIDGET",
+                        "iconName": "alert-circle",
+                        "iconSize": 32,
+                        "color": "#F59E0B",
+                        "leftColumn": 2,
+                        "rightColumn": 6,
+                        "topRow": 2,
+                        "bottomRow": 6
+                      }, {
+                        "widgetName": "AlertasLabel",
+                        "type": "TEXT_WIDGET",
+                        "text": "Alertas",
+                        "fontSize": "0.875rem",
+                        "fontWeight": "MEDIUM",
+                        "textColor": "#6B7280",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 7,
+                        "bottomRow": 9
+                      }, {
+                        "widgetName": "AlertasValue",
+                        "type": "TEXT_WIDGET",
+                        "text": "3",
+                        "fontSize": "1.875rem",
+                        "fontWeight": "BOLD",
+                        "textColor": "#111827",
+                        "leftColumn": 2,
+                        "rightColumn": 14,
+                        "topRow": 10,
+                        "bottomRow": 14
+                      }]
+                    }]
+                  }
+                ]
+              }]
+            },
+            {
+              "widgetName": "ChartsSection",
+              "displayName": "Container",
+              "widgetId": "charts_container",
+              "type": "CONTAINER_WIDGET",
+              "leftColumn": 0,
+              "rightColumn": 64,
+              "topRow": 30,
+              "bottomRow": 60,
+              "parentRowSpace": 10,
+              "parentColumnSpace": 12,
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+              "boxShadow": "{{appsmith.theme.boxShadow.base}}",
+              "children": [{
+                "canvas": [{
+                  "widgetName": "ReceitasChart",
+                  "displayName": "Chart",
+                  "widgetId": "receitas_chart",
+                  "type": "CHART_WIDGET",
+                  "leftColumn": 1,
+                  "rightColumn": 63,
+                  "topRow": 2,
+                  "bottomRow": 28,
+                  "chartType": "LINE_CHART",
+                  "chartName": "Evolução de Receitas",
+                  "allowScroll": false,
+                  "chartData": {
+                    "seriesName1": {
+                      "seriesName": "Receitas",
+                      "data": "{{Table1.tableData.map(row => ({x: row.data, y: row.valor}))}}"
+                    }
+                  },
+                  "xAxisName": "Data",
+                  "yAxisName": "Valor (R$)",
+                  "backgroundColor": "transparent",
+                  "borderRadius": "{{appsmith.theme.borderRadius.md}}",
+                  "primaryColor": "{{appsmith.theme.colors.primary}}"
+                }]
+              }]
+            },
+            {
+              "widgetName": "TableSection",
+              "displayName": "Container",
+              "widgetId": "table_container",
+              "type": "CONTAINER_WIDGET",
+              "leftColumn": 0,
+              "rightColumn": 64,
+              "topRow": 62,
+              "bottomRow": 110,
+              "parentRowSpace": 10,
+              "parentColumnSpace": 12,
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+              "boxShadow": "{{appsmith.theme.boxShadow.base}}",
+              "children": [{
+                "canvas": [{
+                  "widgetName": "TableHeader",
+                  "displayName": "Container",
+                  "widgetId": "table_header",
+                  "type": "CONTAINER_WIDGET",
+                  "leftColumn": 0,
+                  "rightColumn": 64,
+                  "topRow": 0,
+                  "bottomRow": 8,
+                  "children": [{
+                    "canvas": [{
+                      "widgetName": "TableTitle",
+                      "type": "TEXT_WIDGET",
+                      "text": "Últimas Receitas",
+                      "fontSize": "1.25rem",
+                      "fontWeight": "BOLD",
+                      "textColor": "#111827",
+                      "leftColumn": 2,
+                      "rightColumn": 20,
+                      "topRow": 2,
+                      "bottomRow": 6
+                    }, {
+                      "widgetName": "SearchInput",
+                      "type": "INPUT_WIDGET_V2",
+                      "leftColumn": 32,
+                      "rightColumn": 48,
+                      "topRow": 2,
+                      "bottomRow": 6,
+                      "iconName": "search",
+                      "placeholderText": "Buscar receitas...",
+                      "borderRadius": "{{appsmith.theme.borderRadius.md}}"
+                    }, {
+                      "widgetName": "ExportButton",
+                      "type": "BUTTON_WIDGET",
+                      "text": "Exportar",
+                      "leftColumn": 50,
+                      "rightColumn": 62,
+                      "topRow": 2,
+                      "bottomRow": 6,
+                      "buttonVariant": "SECONDARY",
+                      "iconName": "download",
+                      "borderRadius": "{{appsmith.theme.borderRadius.md}}"
+                    }]
+                  }]
+                }, {
+                  "widgetName": "Table1",
+                  "displayName": "Table",
+                  "widgetId": "table1",
+                  "type": "TABLE_WIDGET_V2",
+                  "leftColumn": 1,
+                  "rightColumn": 63,
+                  "topRow": 9,
+                  "bottomRow": 47,
+                  "tableData": "{{GetReceitas.data}}",
+                  "primaryColumns": {
+                    "id": {
+                      "alias": "ID",
+                      "index": 0,
+                      "width": 60,
+                      "horizontalAlignment": "LEFT",
+                      "verticalAlignment": "CENTER",
+                      "columnType": "text",
+                      "textColor": "#6B7280",
+                      "cellBackground": "transparent",
+                      "isCellVisible": true,
+                      "isDerived": false,
+                      "label": "ID",
+                      "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow.id))}}"
+                    },
+                    "data": {
+                      "alias": "Data",
+                      "index": 1,
+                      "width": 120,
+                      "horizontalAlignment": "LEFT",
+                      "verticalAlignment": "CENTER",
+                      "columnType": "date",
+                      "textColor": "#111827",
+                      "cellBackground": "transparent",
+                      "isCellVisible": true,
+                      "isDerived": false,
+                      "label": "Data",
+                      "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow.data))}}",
+                      "dateFormat": "DD/MM/YYYY"
+                    },
+                    "descricao": {
+                      "alias": "Descrição",
+                      "index": 2,
+                      "width": 300,
+                      "horizontalAlignment": "LEFT",
+                      "verticalAlignment": "CENTER",
+                      "columnType": "text",
+                      "textColor": "#111827",
+                      "cellBackground": "transparent",
+                      "isCellVisible": true,
+                      "isDerived": false,
+                      "label": "Descrição",
+                      "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( currentRow.descricao))}}"
+                    },
+                    "valor": {
+                      "alias": "Valor",
+                      "index": 3,
+                      "width": 150,
+                      "horizontalAlignment": "RIGHT",
+                      "verticalAlignment": "CENTER",
+                      "columnType": "number",
+                      "textColor": "#059669",
+                      "cellBackground": "transparent",
+                      "isCellVisible": true,
+                      "isDerived": false,
+                      "label": "Valor",
+                      "computedValue": "{{Table1.processedTableData.map((currentRow, currentIndex) => ( 'R$ ' + (currentRow.valor || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2})))}}"
+                    },
+                    "actions": {
+                      "alias": "Ações",
+                      "index": 4,
+                      "width": 120,
+                      "horizontalAlignment": "CENTER",
+                      "verticalAlignment": "CENTER",
+                      "columnType": "button",
+                      "isCellVisible": true,
+                      "isDerived": true,
+                      "label": "Ações",
+                      "buttonLabel": "{{currentRow.id ? 'Editar' : ''}}",
+                      "onClick": "{{showModal('EditModal')}}",
+                      "buttonColor": "{{appsmith.theme.colors.primary}}",
+                      "borderRadius": "{{appsmith.theme.borderRadius.md}}"
+                    }
+                  },
+                  "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+                  "boxShadow": "none",
+                  "animateLoading": true,
+                  "isVisibleSearch": false,
+                  "isVisiblePagination": true,
+                  "delimiter": ","
+                }]
+              }]
+            },
+            {
+              "widgetName": "InsightsSection",
+              "displayName": "Container",
+              "widgetId": "insights_container",
+              "type": "CONTAINER_WIDGET",
+              "leftColumn": 0,
+              "rightColumn": 64,
+              "topRow": 112,
+              "bottomRow": 140,
+              "parentRowSpace": 10,
+              "parentColumnSpace": 12,
+              "backgroundColor": "#F3F4F6",
+              "borderRadius": "{{appsmith.theme.borderRadius.lg}}",
+              "boxShadow": "{{appsmith.theme.boxShadow.base}}",
+              "children": [{
+                "canvas": [{
+                  "widgetName": "InsightsTitle",
+                  "type": "TEXT_WIDGET",
+                  "text": "💡 Insights Inteligentes",
+                  "fontSize": "1.125rem",
+                  "fontWeight": "BOLD",
+                  "textColor": "#111827",
+                  "leftColumn": 2,
+                  "rightColumn": 30,
+                  "topRow": 2,
+                  "bottomRow": 5
+                }, {
+                  "widgetName": "InsightsText",
+                  "type": "TEXT_WIDGET",
+                  "text": "{{GPTInsights.data || 'Analisando seus dados para gerar insights personalizados...'}}",
+                  "fontSize": "0.875rem",
+                  "fontWeight": "NORMAL",
+                  "textColor": "#4B5563",
+                  "leftColumn": 2,
+                  "rightColumn": 62,
+                  "topRow": 6,
+                  "bottomRow": 26,
+                  "overflow": "WRAP"
+                }]
+              }]
+            }
+          ]
+        },
+        "layoutOnLoadActions": [
+          [{
+            "id": "Dashboard_GetReceitas",
+            "name": "GetReceitas",
+            "confirmBeforeExecute": false,
+            "pluginType": "API",
+            "jsonPathKeys": [],
+            "timeoutInMillisecond": 10000
+          }, {
+            "id": "Dashboard_GetTranscricoes",
+            "name": "GetTranscricoes",
+            "confirmBeforeExecute": false,
+            "pluginType": "API",
+            "jsonPathKeys": [],
+            "timeoutInMillisecond": 10000
+          }]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "Dashboard",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": []
+  },
+  "publishedPage": {
+    "name": "Dashboard Principal",
+    "slug": "dashboard",
+    "icon": "home",
+    "layouts": []
+  },
+  "deleted": false,
+  "gitSyncId": "dashboard_001"
+}

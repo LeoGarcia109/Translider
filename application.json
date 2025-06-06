@@ -1,23 +1,67 @@
 {
   "appIsExample": false,
   "appLayout": {
-    "type": "DESKTOP"
+    "type": "FLUID"
   },
   "applicationVersion": 2,
   "collapseInvisibleWidgets": true,
-  "color": "#FFEFDB",
+  "color": "#6366F1",
+  "icon": "chart-line",
+  "theme": {
+    "primaryColor": "#6366F1",
+    "backgroundColor": "#FAFAFA",
+    "borderRadius": "0.5rem",
+    "boxShadow": "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+    "fontFamily": "Inter, system-ui, -apple-system, sans-serif"
+  },
   "evaluationVersion": 2,
   "pages": [
     {
-      "id": "Page1",
+      "id": "Dashboard",
+      "name": "Dashboard Principal",
+      "icon": "home",
       "isDefault": true
     },
     {
-      "id": "Form Responses 1",
-      "isDefault": false
+      "id": "Receitas",
+      "name": "Gestão de Receitas",
+      "icon": "dollar-sign"
+    },
+    {
+      "id": "Transcricoes",
+      "name": "Transcrições",
+      "icon": "file-text"
+    },
+    {
+      "id": "Analytics",
+      "name": "Analytics & Insights",
+      "icon": "trending-up"
+    },
+    {
+      "id": "Configuracoes",
+      "name": "Configurações",
+      "icon": "settings"
     }
   ],
   "unpublishedAppLayout": {
-    "type": "DESKTOP"
+    "type": "FLUID"
+  },
+  "navigationSetting": {
+    "showNavbar": true,
+    "orientation": "side",
+    "navStyle": "sidebar",
+    "position": "static",
+    "itemStyle": "text_icon",
+    "colorStyle": "theme",
+    "logoAssetId": "",
+    "showSignIn": false
+  },
+  "settings": {
+    "enableDarkMode": true,
+    "enableNotifications": true,
+    "enableExport": true,
+    "enableSearch": true,
+    "cacheEnabled": true,
+    "pwaEnabled": true
   }
 }
